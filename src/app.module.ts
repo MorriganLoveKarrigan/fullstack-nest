@@ -29,6 +29,7 @@ import { UsersController } from './modules/users/users.controller';
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
+      uri: process.env.NODE_ENV === 'prod' ? process.env.DATABASE_URL : '',
       host: process.env.POSTGRES_HOST,
       port: Number(process.env.POSTGRES_PORT),
       username: process.env.POSTGRES_USER,
