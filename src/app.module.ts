@@ -27,6 +27,9 @@ const isProdEnv = process.env.NODE_ENV === 'prod'
     }),
     ServeStaticModule.forRoot({
       rootPath: path.resolve(__dirname, 'static'),
+      serveStaticOptions: {
+        index: false
+      }
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
