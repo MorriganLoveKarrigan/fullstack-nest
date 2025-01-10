@@ -8,7 +8,7 @@ import { RolesAuthGuard } from '../auth/roles-auth.guard';
 
 @ApiTags('Roles')
 @ApiBearerAuth()
-@Controller('roles')
+@Controller('/roles')
 @UseGuards(RolesAuthGuard)
 @Roles('USER')
 export class RolesController {

@@ -24,7 +24,7 @@ import { PaginatedPostsResponse } from './types/paginated-posts-response.type';
 
 @ApiTags('Posts')
 @ApiBearerAuth()
-@Controller('posts')
+@Controller('/posts')
 @UseGuards(RolesAuthGuard)
 @Roles('USER')
 export class PostsController {

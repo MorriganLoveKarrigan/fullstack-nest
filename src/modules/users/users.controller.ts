@@ -14,7 +14,7 @@ import { PaginatedUsersResponse } from './types/paginated-users-response.type';
 
 @ApiTags('Users')
 @ApiBearerAuth()
-@Controller('users')
+@Controller('/users')
 @UseGuards(RolesAuthGuard)
 @Roles('ADMIN')
 export class UsersController {
