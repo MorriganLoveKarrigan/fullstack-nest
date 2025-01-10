@@ -26,7 +26,7 @@ const isProdEnv = process.env.NODE_ENV === 'prod'
       envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
     ServeStaticModule.forRoot({
-      rootPath: path.resolve(__dirname, 'static'),
+      rootPath: path.join(process.cwd(),'dist','static'),
       serveStaticOptions: {
         index: false
       }
