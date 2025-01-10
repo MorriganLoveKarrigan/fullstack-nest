@@ -19,6 +19,7 @@ import { PostsController } from './modules/posts/posts.controller';
 import { RolesController } from './modules/roles/roles.controller';
 import { UsersController } from './modules/users/users.controller';
 
+const isProdEnv = process.env.NODE_ENV === 'prod'
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -29,12 +30,12 @@ import { UsersController } from './modules/users/users.controller';
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      uri: process.env.NODE_ENV === 'prod' ? process.env.DATABASE_URL : '',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      uri:  isProdEnv ? process.env.DATABASE_URL : '',
+      host: process.env.PGHOST,
+      port: Number(process.env.PGPORT),
+      username: isProdEnv ? process.env.PGUSER : process.env.POSTGRES_USER,
+      password: isProdEnv ? process.env.PGPASSWORD: process.env.POSTGRES_PASSWORD,
+      database: isProdEnv ? process.env.PGDATABASE : process.env.POSTGRES_DB,
       models: [User, Role, UserRoles, Post],
       autoLoadModels: true,
     }),
