@@ -45,8 +45,15 @@ import { UsersController } from './modules/users/users.controller';
     FilesModule,
   ],
 })
+
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes(PostsController, RolesController, UsersController);
   }
 }
+console.log(process.env.NODE_ENV);
+console.log(process.env.POSTGRES_HOST);
+console.log(process.env.POSTGRES_PORT);
+console.log(process.env.POSTGRES_USER);
+console.log(process.env.POSTGRES_PASSWORD);
+console.log(process.env.POSTGRES_DB);
