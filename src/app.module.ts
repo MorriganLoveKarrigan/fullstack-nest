@@ -38,6 +38,7 @@ const isProdEnv = process.env.NODE_ENV === 'prod'
       database: isProdEnv ? process.env.PGDATABASE : process.env.POSTGRES_DB,
       models: [User, Role, UserRoles, Post],
       autoLoadModels: true,
+      logging: console.log,
     }),
     UsersModule,
     RolesModule,

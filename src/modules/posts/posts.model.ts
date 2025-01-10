@@ -5,7 +5,7 @@ import { User } from '../users/users.model';
 interface PostCreationAttrs {
   title: string;
   content: string;
-  userId: string;
+  userId: number;
   image: string;
 }
 
@@ -28,8 +28,8 @@ export class Post extends Model<Post, PostCreationAttrs> {
   image: string;
 
   @ForeignKey(() => User)
-  @Column({ type: DataType.STRING, allowNull: false })
-  userId: string;
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  userId: number;
 
   @BelongsTo(() => User)
   author: User;
